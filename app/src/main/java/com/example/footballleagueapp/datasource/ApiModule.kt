@@ -22,8 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiModule {
 
     @Provides
-    fun provideTokenInterceptor(): Interceptor {
-        return TokenInterceptor()
+    fun provideTokenInterceptor(@ApplicationContext context: Context): Interceptor {
+        return TokenInterceptor(context)
     }
 
     @Provides

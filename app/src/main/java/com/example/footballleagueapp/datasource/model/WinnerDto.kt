@@ -1,11 +1,9 @@
 package com.example.footballleagueapp.datasource.model
 
-import android.os.Parcelable
+import com.example.footballleagueapp.repositry.model.Winner
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class Winner(
+data class WinnerDto(
 
     @field:SerializedName("venue")
     val venue: String? = null,
@@ -14,7 +12,7 @@ data class Winner(
     val lastUpdated: String? = null,
 
     @field:SerializedName("website")
-    val website: String? = null,
+    val website: Any? = null,
 
     @field:SerializedName("address")
     val address: String? = null,
@@ -38,5 +36,21 @@ data class Winner(
     val shortName: String? = null,
 
     @field:SerializedName("crest")
-    val crest: String? = null
-) : Parcelable
+    val crest: Any? = null
+) {
+    fun toWinner(): Winner {
+        return Winner(
+            venue,
+            lastUpdated,
+            website?.toString(),
+            address,
+            clubColors,
+            name,
+            tla,
+            founded,
+            id,
+            shortName.toString(),
+            crest?.toString()
+        )
+    }
+}

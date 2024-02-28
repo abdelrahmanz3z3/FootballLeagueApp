@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.example.footballleagueapp.R
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
 
@@ -32,6 +33,7 @@ fun loadImage(imageView: ImageView, link: Any?) {
         .with(imageView.context)
         .load(url)
         .placeholder(shimmerDrawable)
+        .error(R.drawable.soccer)
         .into(imageView)
 
 }

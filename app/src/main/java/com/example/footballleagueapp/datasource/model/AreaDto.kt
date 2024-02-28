@@ -1,22 +1,29 @@
 package com.example.footballleagueapp.datasource.model
 
-import android.os.Parcelable
+import com.example.footballleagueapp.repositry.model.Area
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 
-@Parcelize
-data class Area(
+
+data class AreaDto(
 
     @field:SerializedName("code")
     val code: String? = null,
 
     @field:SerializedName("flag")
-    val flag: @RawValue Any? = null,
+    val flag: Any? = null,
 
     @field:SerializedName("name")
     val name: String? = null,
 
     @field:SerializedName("id")
     val id: Int? = null
-) : Parcelable
+) {
+    fun toArea(): Area {
+        return Area(
+            flag = flag.toString(),
+            name = name,
+            id = id,
+            code = code
+        )
+    }
+}

@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.footballleagueapp.databinding.CompetitionItemBinding
-import com.example.footballleagueapp.datasource.model.CompetitionsItem
+import com.example.footballleagueapp.repositry.model.CompetitionsItem
 
-class CompetitionRecyclerAdapter(private var competitions: List<CompetitionsItem?>) :
+class CompetitionRecyclerAdapter(private var competitions: List<CompetitionsItem?>?) :
     RecyclerView.Adapter<CompetitionRecyclerAdapter.ViewHolder>() {
 
     class ViewHolder(val itemBinding: CompetitionItemBinding) :
@@ -28,13 +28,13 @@ class CompetitionRecyclerAdapter(private var competitions: List<CompetitionsItem
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = competitions.size
+    override fun getItemCount(): Int = competitions?.size ?: 0
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(competitions[position])
+        holder.bind(competitions?.get(position))
         onItemClick?.let { onItemClick ->
             holder.itemBinding.root.setOnClickListener {
-                onItemClick.onClick(position, competitions[position])
+                onItemClick.onClick(position, competitions?.get(position))
             }
         }
     }

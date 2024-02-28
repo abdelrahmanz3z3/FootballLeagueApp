@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.footballleagueapp.databinding.ActivityDetailsBinding
-import com.example.footballleagueapp.datasource.model.CompetitionsItem
-import com.example.footballleagueapp.datasource.model.Winner
+import com.example.footballleagueapp.repositry.model.CompetitionsItem
+import com.example.footballleagueapp.repositry.model.Winner
 
 class DetailsActivity : AppCompatActivity() {
     private var _binding: ActivityDetailsBinding? = null
@@ -26,7 +26,7 @@ class DetailsActivity : AppCompatActivity() {
 
         }
         binding?.competition = competition
-        binding?.winner = competition?.currentSeason?.winner as Winner?
+        binding?.winner = competition?.currentSeason?.winner
     }
 
     private fun initViews() {

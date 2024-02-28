@@ -1,15 +1,12 @@
 package com.example.footballleagueapp.datasource.model
 
-import android.os.Parcelable
+import com.example.footballleagueapp.repositry.model.CompetitionsItem
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 
-@Parcelize
-data class CompetitionsItem(
+data class CompetitionsItemDto(
 
     @field:SerializedName("area")
-    val area: Area? = null,
+    val area: AreaDto? = null,
 
     @field:SerializedName("lastUpdated")
     val lastUpdated: String? = null,
@@ -18,7 +15,7 @@ data class CompetitionsItem(
     val code: String? = null,
 
     @field:SerializedName("currentSeason")
-    val currentSeason: CurrentSeason? = null,
+    val currentSeason: CurrentSeasonDto? = null,
 
     @field:SerializedName("name")
     val name: String? = null,
@@ -33,15 +30,22 @@ data class CompetitionsItem(
     val type: String? = null,
 
     @field:SerializedName("emblem")
-    val emblem: @RawValue Any? = null,
+    val emblem: Any? = null,
 
     @field:SerializedName("plan")
     val plan: String? = null
-) : Parcelable
-{
-    fun getWinner(): Winner {
-        return Winner(
-
+) {
+    fun toCompetitionItem(): CompetitionsItem {
+        return CompetitionsItem(
+            area = area?.toArea(),
+            lastUpdated = lastUpdated,
+            code = code,
+            currentSeason = currentSeason?.toCurrentSeason(),
+            name = name,
+            id = id,
+            numberOfAvailableSeasons = numberOfAvailableSeasons,
+            type = type,
+            emblem = emblem.toString()
         )
     }
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="competition"
-            type="com.example.footballleagueapp.datasource.model.CompetitionsItem" />
+            type="com.example.footballleagueapp.repositry.model.CompetitionsItem" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

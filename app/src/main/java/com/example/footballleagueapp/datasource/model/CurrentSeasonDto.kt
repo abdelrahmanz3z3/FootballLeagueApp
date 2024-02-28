@@ -1,15 +1,13 @@
 package com.example.footballleagueapp.datasource.model
 
-import android.os.Parcelable
+import com.example.footballleagueapp.repositry.model.CurrentSeason
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 
-@Parcelize
-data class CurrentSeason(
+
+data class CurrentSeasonDto(
 
     @field:SerializedName("winner")
-    val winner: @RawValue Any? = null,
+    val winner: WinnerDto? = null,
 
     @field:SerializedName("currentMatchday")
     val currentMatchday: Int? = null,
@@ -22,4 +20,14 @@ data class CurrentSeason(
 
     @field:SerializedName("startDate")
     val startDate: String? = null
-) : Parcelable
+) {
+    fun toCurrentSeason(): CurrentSeason {
+        return CurrentSeason(
+            winner = winner?.toWinner(),
+            currentMatchday = currentMatchday,
+            endDate = endDate.toString(),
+            startDate = startDate.toString(),
+            id = id
+        )
+    }
+}

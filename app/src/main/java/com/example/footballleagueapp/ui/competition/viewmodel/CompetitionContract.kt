@@ -1,7 +1,7 @@
 package com.example.footballleagueapp.ui.competition.viewmodel
 
 import com.example.footballleagueapp.common.SingleLiveEvent
-import com.example.footballleagueapp.datasource.model.CompetitionsItem
+import com.example.footballleagueapp.repositry.model.CompetitionsItem
 import kotlinx.coroutines.flow.StateFlow
 
 class CompetitionContract {

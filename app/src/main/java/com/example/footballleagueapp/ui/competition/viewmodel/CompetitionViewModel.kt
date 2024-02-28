@@ -46,7 +46,7 @@ class CompetitionViewModel @Inject constructor(private val competitionRepository
                     }
 
                     is ResultWrapper.Success -> {
-                        _state.emit(CompetitionContract.State.Success(data.data.competitions!!))
+                        _state.emit(CompetitionContract.State.Success(data.data!!))
                     }
                 }
             }

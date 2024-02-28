@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.footballleagueapp.databinding.ActivityCompetitionBinding
-import com.example.footballleagueapp.datasource.model.CompetitionsItem
+import com.example.footballleagueapp.repositry.model.CompetitionsItem
 import com.example.footballleagueapp.ui.competition.adapter.CompetitionRecyclerAdapter
 import com.example.footballleagueapp.ui.competition.viewmodel.CompetitionContract
 import com.example.footballleagueapp.ui.competition.viewmodel.CompetitionViewModel
