@@ -17,7 +17,10 @@ class CompetitionViewModel @Inject constructor(private val getCompetitionUseCase
 
     override fun invokeActions(action: CompetitionContract.Action) {
         when (action) {
-            is CompetitionContract.Action.GotoDetailsActivity -> {}
+            is CompetitionContract.Action.GotoDetailsActivity -> {
+                _event.postValue(CompetitionContract.Event.CompetitionItemClicked(action.item))
+            }
+
             is CompetitionContract.Action.LoadCompetition -> {
                 getCompetitions()
             }
@@ -29,8 +32,10 @@ class CompetitionViewModel @Inject constructor(private val getCompetitionUseCase
         MutableStateFlow<CompetitionContract.State>(CompetitionContract.State.Loading)
     override val state: StateFlow<CompetitionContract.State>
         get() = _state
-    override val event: SingleLiveEvent<CompetitionContract.State>
-        get() = TODO("Not yet implemented")
+
+    private val _event = SingleLiveEvent<CompetitionContract.Event>()
+    override val event: SingleLiveEvent<CompetitionContract.Event>
+        get() = _event
 
     private fun getCompetitions() {
         viewModelScope.launch {

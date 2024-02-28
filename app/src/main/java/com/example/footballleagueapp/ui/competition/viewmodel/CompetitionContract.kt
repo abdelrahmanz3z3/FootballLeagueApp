@@ -9,12 +9,12 @@ class CompetitionContract {
     interface ViewModel {
         fun invokeActions(action: Action)
         val state: StateFlow<State>
-        val event: SingleLiveEvent<State>
+        val event: SingleLiveEvent<Event>
     }
 
     sealed class Action {
         data object LoadCompetition : Action()
-        data object GotoDetailsActivity : Action()
+        data class GotoDetailsActivity(val item: CompetitionsItem) : Action()
     }
 
     sealed class State {
@@ -24,6 +24,6 @@ class CompetitionContract {
     }
 
     sealed class Event {
-        data object CompetitionItemClicked : Event()
+        data class CompetitionItemClicked(val item: CompetitionsItem) : Event()
     }
 }

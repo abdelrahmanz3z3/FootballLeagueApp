@@ -40,6 +40,15 @@ class CompetitionActivity : AppCompatActivity() {
                 }
             }
         }
+        viewModel.event.observe(this, ::handelEvents)
+    }
+
+    private fun handelEvents(event: CompetitionContract.Event) {
+        when (event) {
+            is CompetitionContract.Event.CompetitionItemClicked -> {
+                navigateToDetailsActivity(event.item)
+            }
+        }
     }
 
     private fun renderViewStates(state: CompetitionContract.State) {
@@ -83,7 +92,7 @@ class CompetitionActivity : AppCompatActivity() {
         recyclerAdapter.onItemClick =
             CompetitionRecyclerAdapter.OnItemClick { _, competition ->
                 competition?.let {
-                    navigateToDetailsActivity(it)
+                    viewModel.invokeActions(CompetitionContract.Action.GotoDetailsActivity(it))
                 }
             }
     }
