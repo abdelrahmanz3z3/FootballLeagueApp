@@ -8,7 +8,7 @@ class TokenInterceptor @Inject constructor() :
     Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val newRequestBuilder = chain.request().newBuilder()
-            .addHeader("X-Auth-Token", "6fdc589768e8481db9823c6c7e84f369")
+            .addHeader("X-Auth-Token", Constants.apiToken)
         return chain.proceed(newRequestBuilder.build())
     }
 

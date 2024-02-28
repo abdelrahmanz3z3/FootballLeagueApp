@@ -1,6 +1,7 @@
 package com.example.data
 
 import android.util.Log
+import com.example.data.common.Constants
 import com.example.data.common.TokenInterceptor
 import com.example.data.webservice.WebService
 import dagger.Module
@@ -28,7 +29,7 @@ class ApiModule {
     @Provides
     fun provideCertificatePinner(): CertificatePinner {
         return CertificatePinner.Builder()
-            .add("api.football-data.org", "sha256/lhGIeYoZZGZh2Izcjw4ed6f0v8Fd0//jyiC/dV8bJVo=")
+            .add(Constants.hostName, Constants.sha256)
             .build()
     }
 
@@ -69,7 +70,7 @@ class ApiModule {
     ): Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("https://api.football-data.org/")
+            .baseUrl(Constants.baseUrl)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
