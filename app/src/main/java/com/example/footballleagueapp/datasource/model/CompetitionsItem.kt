@@ -38,3 +38,10 @@ data class CompetitionsItem(
     @field:SerializedName("plan")
     val plan: String? = null
 ) : Parcelable
+{
+    fun getWinner(): Winner {
+        return Winner(
+
+        )
+    }
+}

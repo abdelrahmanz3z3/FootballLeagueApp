@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FootballLeagueApp</string>
+    <string name="which_league_do_you_interest">Which League \n Do You Interest ?</string>
+    <string name="visit_their_website"><u>Visit Their Website</u></string>
+</resources>

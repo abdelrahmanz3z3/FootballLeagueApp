@@ -1,0 +1,12 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FootballLeagueApp" parent="Theme.Material3.DayNight.NoActionBar">
+        Customize your light theme here.
+        <item name="colorPrimary">@color/primaryColour</item>
+        <item name="statusBarBackground">@color/transparent</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.FootballLeagueApp" parent="Base.Theme.FootballLeagueApp" />
+</resources>

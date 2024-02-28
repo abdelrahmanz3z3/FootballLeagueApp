@@ -2,6 +2,7 @@ package com.example.footballleagueapp.datasource
 
 import android.content.Context
 import android.util.Log
+import com.example.footballleagueapp.common.TokenInterceptor
 import com.example.footballleagueapp.datasource.webservice.WebService
 import dagger.Module
 import dagger.Provides
@@ -10,6 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
 import okhttp3.CertificatePinner
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,6 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 @Module
 @InstallIn(SingletonComponent::class)
 class ApiModule {
+
+    @Provides
+    fun provideTokenInterceptor(): Interceptor {
+        return TokenInterceptor()
+    }
 
     @Provides
     fun provideCache(@ApplicationContext context: Context): Cache {
@@ -46,12 +53,14 @@ class ApiModule {
     fun provideHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
         certificatePinner: CertificatePinner,
-        cache: Cache
+        cache: Cache,
+        tokenInterceptor: TokenInterceptor
     ): OkHttpClient {
         return OkHttpClient
             .Builder()
             .addInterceptor(loggingInterceptor)
             .certificatePinner(certificatePinner)
+            .addInterceptor(tokenInterceptor)
             .cache(cache)
             .build()
     }

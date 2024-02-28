@@ -1,7 +1,8 @@
-package com.example.footballleagueapp.ui
+package com.example.footballleagueapp.ui.details
 
 import android.os.Build
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.footballleagueapp.databinding.ActivityDetailsBinding
 import com.example.footballleagueapp.datasource.model.CompetitionsItem
@@ -21,17 +22,21 @@ class DetailsActivity : AppCompatActivity() {
         val competition = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra("competition", CompetitionsItem::class.java)
         } else {
-            intent.getParcelableExtra("competition") as? CompetitionsItem
+            intent.getParcelableExtra("competition") as CompetitionsItem?
 
         }
         binding?.competition = competition
-        binding?.content?.winner = competition?.currentSeason?.winner as? Winner
+        binding?.winner = competition?.currentSeason?.winner as Winner?
     }
 
     private fun initViews() {
         _binding = ActivityDetailsBinding.inflate(layoutInflater)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_SECURE,
+            WindowManager.LayoutParams.FLAG_SECURE
+        )
         setContentView(binding?.root)
-        binding?.toolbar?.setOnClickListener {
+        binding?.toolbar?.setNavigationOnClickListener {
             finish()
         }
     }

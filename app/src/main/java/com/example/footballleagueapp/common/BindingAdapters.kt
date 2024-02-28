@@ -2,8 +2,8 @@ package com.example.footballleagueapp.common
 
 import android.content.Intent
 import android.net.Uri
+import android.view.View
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.facebook.shimmer.Shimmer
@@ -37,10 +37,10 @@ fun loadImage(imageView: ImageView, link: Any?) {
 }
 
 @BindingAdapter("app:LinkClicked")
-fun clickLink(textView: TextView, url: String?) {
-    url?.let {
-        textView.setOnClickListener { text ->
-            text.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
-        }
+fun clickLink(view: View, url: String?) {
+    view.setOnClickListener {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("$url"))
+        it.context.startActivity(intent)
     }
+
 }
