@@ -4,9 +4,8 @@ import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.example.domain.model.CompetitionsItem
 import com.example.footballleagueapp.databinding.ActivityDetailsBinding
-import com.example.footballleagueapp.repositry.model.CompetitionsItem
-import com.example.footballleagueapp.repositry.model.Winner
 
 class DetailsActivity : AppCompatActivity() {
     private var _binding: ActivityDetailsBinding? = null

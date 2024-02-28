@@ -3,8 +3,8 @@ package com.example.footballleagueapp.ui.competition.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.model.CompetitionsItem
 import com.example.footballleagueapp.databinding.CompetitionItemBinding
-import com.example.footballleagueapp.repositry.model.CompetitionsItem
 
 class CompetitionRecyclerAdapter(private var competitions: List<CompetitionsItem?>?) :
     RecyclerView.Adapter<CompetitionRecyclerAdapter.ViewHolder>() {

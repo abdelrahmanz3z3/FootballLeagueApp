@@ -8,11 +8,11 @@
 
         <variable
             name="winner"
-            type="com.example.footballleagueapp.repositry.model.Winner" />
+            type="com.example.domain.model.Winner" />
 
         <variable
             name="competition"
-            type="com.example.footballleagueapp.repositry.model.CompetitionsItem" />
+            type="com.example.domain.model.CompetitionsItem" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
