@@ -41,7 +41,7 @@ fun loadImage(imageView: ImageView, link: Any?) {
 @BindingAdapter("app:LinkClicked")
 fun clickLink(view: View, url: String?) {
     view.setOnClickListener {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("$url"))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         it.context.startActivity(intent)
     }
 

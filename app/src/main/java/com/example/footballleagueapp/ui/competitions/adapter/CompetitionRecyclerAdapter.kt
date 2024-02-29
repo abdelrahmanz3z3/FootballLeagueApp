@@ -1,4 +1,4 @@
-package com.example.footballleagueapp.ui.competition.adapter
+package com.example.footballleagueapp.ui.competitions.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,8 +24,9 @@ class CompetitionRecyclerAdapter(private var competitions: List<CompetitionsItem
     }
 
     fun bindNewList(competitions: List<CompetitionsItem?>) {
+        val oldSize = this.competitions?.size ?: 0
         this.competitions = competitions
-        notifyDataSetChanged()
+        notifyItemRangeInserted(oldSize, this.competitions!!.size)
     }
 
     override fun getItemCount(): Int = competitions?.size ?: 0

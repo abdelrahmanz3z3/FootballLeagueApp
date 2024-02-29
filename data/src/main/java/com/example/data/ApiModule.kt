@@ -25,9 +25,13 @@ import java.io.File
 class ApiModule {
 
     @Provides
-    fun provideCache(@ApplicationContext context: Context): Cache {
-        val cacheDirectory = File(context.cacheDir, "offline_cache_directory")
-        return Cache(cacheDirectory, 5 * 1024 * 1024)
+    fun provideFileInstanceForCaching(@ApplicationContext context: Context): File {
+        return File(context.cacheDir, "offline_cache_directory")
+    }
+
+    @Provides
+    fun provideCache(file: File): Cache {
+        return Cache(file, 5 * 1024 * 1024)
     }
 
     @Provides

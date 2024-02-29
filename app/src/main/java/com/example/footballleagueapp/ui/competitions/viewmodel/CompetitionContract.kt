@@ -1,4 +1,4 @@
-package com.example.footballleagueapp.ui.competition.viewmodel
+package com.example.footballleagueapp.ui.competitions.viewmodel
 
 import com.example.domain.model.CompetitionsItem
 import com.example.footballleagueapp.common.SingleLiveEvent

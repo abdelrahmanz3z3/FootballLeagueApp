@@ -41,7 +41,6 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     app:LoadImage="@{competition.emblem}"
-                    app:riv_corner_radius="@dimen/_50sdp"
                     tools:src="@drawable/soccer" />
             </com.google.android.material.card.MaterialCardView>
 

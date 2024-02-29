@@ -1,4 +1,4 @@
-package com.example.footballleagueapp.ui.competition.viewmodel
+package com.example.footballleagueapp.ui.competitions.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,13 +6,17 @@ import com.example.domain.common.ResultWrapper
 import com.example.domain.usecase.GetCompetitionUseCase
 import com.example.footballleagueapp.common.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CompetitionViewModel @Inject constructor(private val getCompetitionUseCase: GetCompetitionUseCase) :
+class CompetitionViewModel @Inject constructor(
+    private val getCompetitionUseCase: GetCompetitionUseCase,
+    private val ioDispatcher: CoroutineDispatcher
+) :
     ViewModel(), CompetitionContract.ViewModel {
 
     override fun invokeActions(action: CompetitionContract.Action) {
@@ -38,7 +42,7 @@ class CompetitionViewModel @Inject constructor(private val getCompetitionUseCase
         get() = _event
 
     private fun getCompetitions() {
-        viewModelScope.launch {
+        viewModelScope.launch(ioDispatcher) {
             val result = getCompetitionUseCase.invoke()
             result.collect { data ->
                 when (data) {
